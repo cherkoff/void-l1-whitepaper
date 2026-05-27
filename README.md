@@ -18,7 +18,7 @@ Read the technical white paper:
 
 ## Architecture
 
-![Void-L1 Architecture](./assets/void-l1-architecture.png)
+![Void-L1 Architecture](./void-l1-architecture.png)
 
 ## Status
 
