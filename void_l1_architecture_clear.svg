@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1550" viewBox="0 0 2400 1550">
+<defs>
+  <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+    <path d="M2,2 L12,7 L2,12 z" fill="#475569"/>
+  </marker>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+  </filter>
+</defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="24" y="24" width="2352" height="1502" rx="30" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="3"/>
+
+<text x="1200" y="78" text-anchor="middle" font-size="38" font-weight="900" fill="#0f172a">Void-L1 — четкая архитектура по WHITEPAPER_TECHNICAL.md</text>
+<text x="1200" y="116" text-anchor="middle" font-size="22" fill="#475569">Proof-of-Ephemera Layer-1: proof-carrying tx → stateless verification → hot set + accumulator root → reversible expiry через Archive Market</text>
+<rect x="60" y="160" width="380" height="245" rx="22" fill="#ECFEFF" stroke="#0891B2" stroke-width="3"/>
+<text x="84" y="202" font-size="25" font-weight="800" fill="#0f172a">1. Клиенты</text>
+<line x1="82" y1="218" x2="418" y2="218" stroke="#0891B2" stroke-width="2" opacity="0.35"/>
+<text x="86" y="248" font-size="20" fill="#1e293b">• Wallet / DApp / CLI</text>
+<text x="86" y="274" font-size="20" fill="#1e293b">формирует intent и payload</text>
+<text x="86" y="300" font-size="20" fill="#1e293b">• Ed25519 подпись с domain</text>
+<text x="86" y="326" font-size="20" fill="#1e293b">separation</text>
+<text x="86" y="352" font-size="20" fill="#1e293b">• Light client хранит только</text>
+<text x="86" y="378" font-size="20" fill="#1e293b">root R_t и проверяет proofs</text>
+<rect x="500" y="160" width="420" height="245" rx="22" fill="#F0FDFA" stroke="#0F766E" stroke-width="3"/>
+<text x="524" y="202" font-size="25" font-weight="800" fill="#0f172a">2. Proof-Carrying Tx</text>
+<line x1="522" y1="218" x2="898" y2="218" stroke="#0F766E" stroke-width="2" opacity="0.35"/>
+<text x="526" y="248" font-size="20" fill="#1e293b">• sender_commitment,</text>
+<text x="526" y="274" font-size="20" fill="#1e293b">intent_type, payload</text>
+<text x="526" y="300" font-size="20" fill="#1e293b">• witnesses + accumulator proofs</text>
+<text x="526" y="326" font-size="20" fill="#1e293b">против R_t</text>
+<text x="526" y="352" font-size="20" fill="#1e293b">• vdf_proof, fee_policy,</text>
+<text x="526" y="378" font-size="20" fill="#1e293b">conflict_tags, valid_until_epoch</text>
+<rect x="980" y="160" width="420" height="245" rx="22" fill="#F7FEE7" stroke="#65A30D" stroke-width="3"/>
+<text x="1004" y="202" font-size="25" font-weight="800" fill="#0f172a">3. Network / Mempool</text>
+<line x1="1002" y1="218" x2="1378" y2="218" stroke="#65A30D" stroke-width="2" opacity="0.35"/>
+<text x="1006" y="248" font-size="20" fill="#1e293b">• Node API + gossip; сейчас HTTP</text>
+<text x="1006" y="274" font-size="20" fill="#1e293b">polling, future libp2p</text>
+<text x="1006" y="300" font-size="20" fill="#1e293b">• replay-protection dedup</text>
+<text x="1006" y="326" font-size="20" fill="#1e293b">• nonce enforcement, dynamic VDF</text>
+<text x="1006" y="352" font-size="20" fill="#1e293b">difficulty</text>
+<text x="1006" y="378" font-size="20" fill="#1e293b">• conflict_tags для parallel</text>
+<rect x="1460" y="160" width="420" height="245" rx="22" fill="#FFF7ED" stroke="#EA580C" stroke-width="3"/>
+<text x="1484" y="202" font-size="25" font-weight="800" fill="#0f172a">4. Consensus / Verify</text>
+<line x1="1482" y1="218" x2="1858" y2="218" stroke="#EA580C" stroke-width="2" opacity="0.35"/>
+<text x="1486" y="248" font-size="20" fill="#1e293b">• current devnet: round-robin</text>
+<text x="1486" y="274" font-size="20" fill="#1e293b">proposer</text>
+<text x="1486" y="300" font-size="20" fill="#1e293b">• HotStuff-style BFT есть как</text>
+<text x="1486" y="326" font-size="20" fill="#1e293b">reference, но live loop не wired</text>
+<text x="1486" y="352" font-size="20" fill="#1e293b">• stateless verifier проверяет</text>
+<text x="1486" y="378" font-size="20" fill="#1e293b">proofs, sig, VDF, nonce,</text>
+<rect x="1940" y="160" width="400" height="245" rx="22" fill="#EEF2FF" stroke="#4F46E5" stroke-width="3"/>
+<text x="1964" y="202" font-size="25" font-weight="800" fill="#0f172a">5. State Root</text>
+<line x1="1962" y1="218" x2="2318" y2="218" stroke="#4F46E5" stroke-width="2" opacity="0.35"/>
+<text x="1966" y="248" font-size="20" fill="#1e293b">• VoidStateCommitment_t = hash</text>
+<text x="1966" y="274" font-size="20" fill="#1e293b">of layered accumulators</text>
+<text x="1966" y="300" font-size="20" fill="#1e293b">• validators держат compact</text>
+<text x="1966" y="326" font-size="20" fill="#1e293b">root + active hot set</text>
+<text x="1966" y="352" font-size="20" fill="#1e293b">• новый root R_{t+1} после</text>
+<text x="1966" y="378" font-size="20" fill="#1e293b">valid state transition</text>
+<line x1="440" y1="282" x2="500" y2="282" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="470.0" y="270.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">build</text>
+<line x1="920" y1="282" x2="980" y2="282" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="950.0" y="270.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">submit</text>
+<line x1="1400" y1="282" x2="1460" y2="282" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1430.0" y="270.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">select</text>
+<line x1="1880" y1="282" x2="1940" y2="282" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1910.0" y="270.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">commit</text>
+<rect x="60" y="475" width="380" height="195" rx="22" fill="#ECFEFF" stroke="#0891B2" stroke-width="3"/>
+<text x="84" y="517" font-size="25" font-weight="800" fill="#0f172a">Light Client Path</text>
+<line x1="82" y1="533" x2="418" y2="533" stroke="#0891B2" stroke-width="2" opacity="0.35"/>
+<text x="86" y="563" font-size="20" fill="#1e293b">• получает affected leaves +</text>
+<text x="86" y="589" font-size="20" fill="#1e293b">proofs от full node</text>
+<text x="86" y="615" font-size="20" fill="#1e293b">• сам проверяет inclusion</text>
+<text x="86" y="641" font-size="20" fill="#1e293b">against R_t</text>
+<rect x="500" y="475" width="420" height="195" rx="22" fill="#F0FDFA" stroke="#0F766E" stroke-width="3"/>
+<text x="524" y="517" font-size="25" font-weight="800" fill="#0f172a">Client-side VDF</text>
+<line x1="522" y1="533" x2="898" y2="533" stroke="#0F766E" stroke-width="2" opacity="0.35"/>
+<text x="526" y="563" font-size="20" fill="#1e293b">• challenge =</text>
+<text x="526" y="589" font-size="20" fill="#1e293b">H(sender_identity_hash,</text>
+<text x="526" y="615" font-size="20" fill="#1e293b">network_magic)</text>
+<text x="526" y="641" font-size="20" fill="#1e293b">• difficulty растёт от</text>
+<rect x="1460" y="475" width="420" height="245" rx="22" fill="#FFF7ED" stroke="#EA580C" stroke-width="3"/>
+<text x="1484" y="517" font-size="25" font-weight="800" fill="#0f172a">Execution / Intent VM</text>
+<line x1="1482" y1="533" x2="1858" y2="533" stroke="#EA580C" stroke-width="2" opacity="0.35"/>
+<text x="1486" y="563" font-size="20" fill="#1e293b">• apply intent-specific state</text>
+<text x="1486" y="589" font-size="20" fill="#1e293b">transition</text>
+<text x="1486" y="615" font-size="20" fill="#1e293b">• tx fees → block producer</text>
+<text x="1486" y="641" font-size="20" fill="#1e293b">• emission → validators; rent</text>
+<text x="1486" y="667" font-size="20" fill="#1e293b">burn/governance-directed</text>
+<text x="1486" y="693" font-size="20" fill="#1e293b">• VM trait + 14-opcode reference</text>
+<rect x="1940" y="475" width="400" height="245" rx="22" fill="#EEF2FF" stroke="#4F46E5" stroke-width="3"/>
+<text x="1964" y="517" font-size="25" font-weight="800" fill="#0f172a">Layered Accumulators</text>
+<line x1="1962" y1="533" x2="2318" y2="533" stroke="#4F46E5" stroke-width="2" opacity="0.35"/>
+<text x="1966" y="563" font-size="20" fill="#1e293b">• BalanceAccumulator</text>
+<text x="1966" y="589" font-size="20" fill="#1e293b">• AssetRegistry</text>
+<text x="1966" y="615" font-size="20" fill="#1e293b">• NftCollectionRoot</text>
+<text x="1966" y="641" font-size="20" fill="#1e293b">• SmartAccountPolicyRoot</text>
+<text x="1966" y="667" font-size="20" fill="#1e293b">• ValidatorCommitmentRoot</text>
+<text x="1966" y="693" font-size="20" fill="#1e293b">• v0: sorted-leaf Merkle +</text>
+<polyline points="2140,405 2140,455 250,455 250,475" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<text x="250" y="442" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">publish R_t</text>
+<line x1="710" y1="405" x2="710" y2="475" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="710.0" y="428.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">VDF</text>
+<line x1="1670" y1="405" x2="1670" y2="475" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1670.0" y="428.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">execute</text>
+<line x1="1940" y1="600" x2="1880" y2="600" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-dasharray="10 8"/>
+<text x="1910.0" y="588.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">read/write</text>
+<rect x="1220" y="850" width="360" height="225" rx="22" fill="#FEFCE8" stroke="#CA8A04" stroke-width="3"/>
+<text x="1244" y="892" font-size="25" font-weight="800" fill="#0f172a">6. State-Rent / TTL</text>
+<line x1="1242" y1="908" x2="1558" y2="908" stroke="#CA8A04" stroke-width="2" opacity="0.35"/>
+<text x="1246" y="938" font-size="20" fill="#1e293b">• classify(O,</text>
+<text x="1246" y="964" font-size="20" fill="#1e293b">current_epoch)</text>
+<text x="1246" y="990" font-size="20" fill="#1e293b">• Paid: stays active</text>
+<text x="1246" y="1016" font-size="20" fill="#1e293b">• Grace: overdue but within</text>
+<text x="1246" y="1042" font-size="20" fill="#1e293b">G=16 epochs</text>
+<rect x="1640" y="850" width="340" height="225" rx="22" fill="#FDF4FF" stroke="#A21CAF" stroke-width="3"/>
+<text x="1664" y="892" font-size="25" font-weight="800" fill="#0f172a">GhostObject</text>
+<line x1="1662" y1="908" x2="1958" y2="908" stroke="#A21CAF" stroke-width="2" opacity="0.35"/>
+<text x="1666" y="938" font-size="20" fill="#1e293b">• не удаляется</text>
+<text x="1666" y="964" font-size="20" fill="#1e293b">криптографически</text>
+<text x="1666" y="990" font-size="20" fill="#1e293b">• removed from active hot</text>
+<text x="1666" y="1016" font-size="20" fill="#1e293b">set</text>
+<text x="1666" y="1042" font-size="20" fill="#1e293b">• commitment remains</text>
+<rect x="2040" y="850" width="300" height="225" rx="22" fill="#FDF4FF" stroke="#A21CAF" stroke-width="3"/>
+<text x="2064" y="892" font-size="25" font-weight="800" fill="#0f172a">Archive Market</text>
+<line x1="2062" y1="908" x2="2318" y2="908" stroke="#A21CAF" stroke-width="2" opacity="0.35"/>
+<text x="2066" y="938" font-size="20" fill="#1e293b">• archive nodes store</text>
+<text x="2066" y="964" font-size="20" fill="#1e293b">original bytes</text>
+<text x="2066" y="990" font-size="20" fill="#1e293b">• ArchiveOffer: price,</text>
+<text x="2066" y="1016" font-size="20" fill="#1e293b">bond, deadline,</text>
+<text x="2066" y="1042" font-size="20" fill="#1e293b">reputation</text>
+<rect x="1640" y="1160" width="420" height="245" rx="22" fill="#FDF4FF" stroke="#A21CAF" stroke-width="3"/>
+<text x="1664" y="1202" font-size="25" font-weight="800" fill="#0f172a">ResurrectionTransition</text>
+<line x1="1662" y1="1218" x2="2038" y2="1218" stroke="#A21CAF" stroke-width="2" opacity="0.35"/>
+<text x="1666" y="1248" font-size="20" fill="#1e293b">• fresh ArchiveProof + original</text>
+<text x="1666" y="1274" font-size="20" fill="#1e293b">payload bytes</text>
+<text x="1666" y="1300" font-size="20" fill="#1e293b">• pay back-rent + resurrection</text>
+<text x="1666" y="1326" font-size="20" fill="#1e293b">fee</text>
+<text x="1666" y="1352" font-size="20" fill="#1e293b">• object re-added under current</text>
+<text x="1666" y="1378" font-size="20" fill="#1e293b">accumulator version</text>
+<polyline points="2140,720 2140,790 1400,790 1400,850" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1400" y="777" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">ttl_epoch checks</text>
+<line x1="1580" y1="962" x2="1640" y2="962" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="1610.0" y="950.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">Prune</text>
+<line x1="1980" y1="962" x2="2040" y2="962" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="2010.0" y="950.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">retrieve</text>
+<polyline points="2190,1075 2190,1215 2060,1215" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="2190" y="1202" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">proof + payment</text>
+<polyline points="1640,1285 1540,1285 1540,760 2140,760 2140,720" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1540" y="747" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">restore active object</text>
+<rect x="60" y="850" width="460" height="225" rx="22" fill="#F5F3FF" stroke="#7C3AED" stroke-width="3"/>
+<text x="84" y="892" font-size="25" font-weight="800" fill="#0f172a">7. Governance</text>
+<line x1="82" y1="908" x2="498" y2="908" stroke="#7C3AED" stroke-width="2" opacity="0.35"/>
+<text x="86" y="938" font-size="20" fill="#1e293b">• stake-weighted on-chain</text>
+<text x="86" y="964" font-size="20" fill="#1e293b">governance</text>
+<text x="86" y="990" font-size="20" fill="#1e293b">• migration требует</text>
+<text x="86" y="1016" font-size="20" fill="#1e293b">DecisionOutcome::Accepted</text>
+<text x="86" y="1042" font-size="20" fill="#1e293b">• trust risk: governance capture</text>
+<rect x="590" y="850" width="470" height="225" rx="22" fill="#F5F3FF" stroke="#7C3AED" stroke-width="3"/>
+<text x="614" y="892" font-size="25" font-weight="800" fill="#0f172a">AccumulatorVersionRegistry</text>
+<line x1="612" y1="908" x2="1038" y2="908" stroke="#7C3AED" stroke-width="2" opacity="0.35"/>
+<text x="616" y="938" font-size="20" fill="#1e293b">• monotone version tags</text>
+<text x="616" y="964" font-size="20" fill="#1e293b">• retire-before-install</text>
+<text x="616" y="990" font-size="20" fill="#1e293b">• governance-bound migration</text>
+<text x="616" y="1016" font-size="20" fill="#1e293b">commitment</text>
+<text x="616" y="1042" font-size="20" fill="#1e293b">• позволяет менять accumulator</text>
+<rect x="590" y="1160" width="470" height="245" rx="22" fill="#FEF2F2" stroke="#DC2626" stroke-width="3" stroke-dasharray="11 8"/>
+<text x="614" y="1202" font-size="25" font-weight="800" fill="#0f172a">Open Review Points</text>
+<line x1="612" y1="1218" x2="1038" y2="1218" stroke="#DC2626" stroke-width="2" opacity="0.35"/>
+<text x="616" y="1248" font-size="20" fill="#1e293b">• production BFT integration</text>
+<text x="616" y="1274" font-size="20" fill="#1e293b">• archive market bootstrap economics</text>
+<text x="616" y="1300" font-size="20" fill="#1e293b">• VDF precomputation defense /</text>
+<text x="616" y="1326" font-size="20" fill="#1e293b">recent block hash</text>
+<text x="616" y="1352" font-size="20" fill="#1e293b">• MEV / fair ordering analysis</text>
+<text x="616" y="1378" font-size="20" fill="#1e293b">• external cryptography audit needed</text>
+<line x1="520" y1="962" x2="590" y2="962" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="555.0" y="950.0" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">accepted decision</text>
+<polyline points="1060,962 1160,962 1160,600 1940,600" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<text x="1160" y="587" text-anchor="middle" font-size="17" fill="#475569" font-weight="800">activate backend</text>
+<polyline points="825,1075 825,1160" fill="none" stroke="#DC2626" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<text x="825" y="1147" text-anchor="middle" font-size="17" fill="#DC2626" font-weight="800">known gaps</text>
+<polyline points="1060,1280 1500,1280 1500,1120 1220,1120 1220,962" fill="none" stroke="#DC2626" stroke-width="3" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<text x="1500" y="1107" text-anchor="middle" font-size="17" fill="#DC2626" font-weight="800">review affects design</text>
+<rect x="60" y="1415" width="2280" height="72" rx="20" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+<text x="90" y="1452" font-size="21" font-weight="800" fill="#0f172a">Главная идея схемы:</text>
+<text x="310" y="1452" font-size="21" fill="#334155">валидатору не нужен полный исторический state: транзакция несёт proofs, validator проверяет against R_t, active hot set держится компактно.</text>
+<text x="90" y="1480" font-size="18" fill="#64748b">Старые объекты уходят в GhostObject и восстанавливаются через bonded archive market. Красные dashed-блоки — зоны, требующие review/доработки перед production.</text>
+</svg>
