@@ -14,11 +14,11 @@ It combines:
 
 Read the technical white paper:
 
-[WHITEPAPER.md](./WHITEPAPER.md)
+[WHITEPAPER_TECHNICAL.md](./WHITEPAPER_TECHNICAL.md)
 
 ## Architecture
 
-![Void-L1 Architecture](./void-l1-architecture.png)
+![Void-L1 Architecture](./Void-L1_Architecture.png)
 
 ## Status
 
